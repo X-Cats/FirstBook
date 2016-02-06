@@ -30,7 +30,8 @@
         android:layout_above="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Create Profile"/>
+        android:text="Create Profile"
+        android:onClick="createProfile"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
