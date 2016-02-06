@@ -13,16 +13,34 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Step 1: Create a Profile"
+        android:text="Step 2: Add Details"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: "
+        android:textSize="20sp"
+        android:id="@+id/profileName"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team #: "
+        android:textSize="20sp"
+        android:id="@+id/profileTeam"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subteam: "
+        android:textSize="20sp"
+        android:id="@+id/profilesubTeam"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name:"
+        android:text="Bio:"
         android:ems="10"
         android:id="@+id/editText" />
 
@@ -30,19 +48,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
-        android:text="Team Number:"
+        android:text="Picture Address:"
         android:layout_gravity="center_horizontal" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText3"
-        android:text="Subteam:"
-        android:layout_gravity="center_horizontal" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Next Step"
-        android:onClick="submitInfo"/>
+        android:onClick="create"/>
 
 </LinearLayout>

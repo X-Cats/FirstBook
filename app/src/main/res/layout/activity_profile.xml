@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="FirstBook"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Profile"
+        android:layout_gravity="center_horizontal"
+        />
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TableRow>
+                <ImageView
+                    android:layout_height="100dp"
+                    android:layout_width="100dp"
+                    android:adjustViewBounds="true"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_gravity="center_horizontal"/>
+            <TableLayout>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Name: "
+                        android:layout_gravity="center_horizontal"
+                    />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Team: "
+                        android:layout_gravity="center_horizontal"
+                        />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Subteam: "
+                        android:layout_gravity="center_horizontal"
+                        />
+                </TableRow>
+            </TableLayout>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Bio: "
+                android:layout_gravity="center_horizontal"
+                />
+        </TableRow>
+        <!--<TableRow>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:onClick="goHome"
+                android:layout_gravity="center_horizontal"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:onClick="goHome"
+                android:layout_gravity="center_horizontal"/>
+        </TableRow>-->
+    </TableLayout>
+
+</LinearLayout>

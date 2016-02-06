@@ -15,11 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateProfileActivity">
-
-        </activity>
+        <activity android:name=".CreateProfileActivity"/>
+        <activity android:name=".CreateProfileActivity2"/>
         <activity android:name=".ViewTeamsActivity"/>
         <activity android:name=".ViewSubTeamsActivity"/>
+        <activity android:name=".ViewMembersActivity"/>
+        <activity android:name=".ViewProfileActivity"/>
     </application>
 
 </manifest>

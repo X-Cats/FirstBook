@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Subteams"
+        android:text="Members"
         android:layout_gravity="center_horizontal"
         />
     <TableLayout
@@ -27,11 +27,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:onClick="viewMembers">>
+                android:onClick="viewProfile">
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="App"
+                    android:text="Theo"
                     android:layout_gravity="center_horizontal"/>
                 <ImageView
                     android:layout_width="wrap_content"

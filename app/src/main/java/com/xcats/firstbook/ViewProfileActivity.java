@@ -8,13 +8,13 @@ import android.view.View;
 /**
  * Created by aidan on 2/6/16.
  */
-public class ViewSubTeamsActivity extends Activity{
+public class ViewProfileActivity extends Activity{
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subteam_list);
+        setContentView(R.layout.activity_profile);
     }
-    public void viewMembers (View view){
-        Intent viewMembers = new Intent(this,ViewMembersActivity.class);
-        this.startActivity(viewMembers);
-    }
+    /*public void goHome(View view){
+        Intent goHome = new Intent(this,LogInActivity.class);
+        this.startActivity(goHome);
+    }*/
 }
