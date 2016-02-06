@@ -19,6 +19,7 @@
 
         </activity>
         <activity android:name=".ViewTeamsActivity"/>
+        <activity android:name=".ViewSubTeamsActivity"/>
     </application>
 
 </manifest>
