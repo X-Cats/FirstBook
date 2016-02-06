@@ -18,4 +18,8 @@ public class LogInActivity extends Activity {
         Intent createProf = new Intent(this,CreateProfileActivity.class);
         this.startActivity(createProf);
     }
+    public void viewTeams(View view){
+        Intent viewTeams = new Intent(this,ViewTeamsActivity.class);
+        this.startActivity(viewTeams);
+    }
 }

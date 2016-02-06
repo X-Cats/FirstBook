@@ -22,7 +22,8 @@
         android:layout_above="@+id/button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Members"/>
+        android:text="Teams"
+        android:onClick="viewTeams"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

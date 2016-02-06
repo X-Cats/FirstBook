@@ -18,6 +18,7 @@
         <activity android:name=".CreateProfileActivity">
 
         </activity>
+        <activity android:name=".ViewTeamsActivity"/>
     </application>
 
 </manifest>
