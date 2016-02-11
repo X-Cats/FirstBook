@@ -40,34 +40,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Bio:"
+        android:hint="Bio:"
         android:ems="10"
-        android:id="@+id/editText" />
+        android:id="@+id/bio" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:text="Picture Address:"
+        android:id="@+id/age"
+        android:hint="Age:"
         android:layout_gravity="center_horizontal" />
 
     <RadioGroup
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/typeGroup">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student"/>
+            android:text="Student"
+            android:id="@+id/student"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mentor"/>
+            android:text="Mentor"
+            android:id="@+id/mentorButton"/>
     </RadioGroup>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next Step"
+        android:text="Submit"
         android:onClick="create"/>
 
 </LinearLayout>

@@ -22,27 +22,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name:"
+        android:hint="Name:"
         android:ems="10"
-        android:id="@+id/editText" />
+        android:id="@+id/name" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:text="Team Number:"
+        android:id="@+id/teamNumber"
+        android:hint="Team Number:"
         android:layout_gravity="center_horizontal" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3"
-        android:text="Subteam:"
+        android:id="@+id/subteam"
+        android:hint="Subteam:"
         android:layout_gravity="center_horizontal" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Next Step"
-        android:onClick="submitInfo"/>
+        android:onClick="nextStep"/>
 
 </LinearLayout>
