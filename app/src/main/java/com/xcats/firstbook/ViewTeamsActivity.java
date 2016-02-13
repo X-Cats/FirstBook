@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -73,13 +74,22 @@ public class ViewTeamsActivity extends Activity {
         {
             // Inflate your row "template" and fill out the fields.
             TableRow row = (TableRow) LayoutInflater.from(this).inflate(R.layout.attrib_row, null);
-            ((TextView)row.findViewById(R.id.attrib_teamName)).setText(teamList[j]);
+            final String teamNum = teamList[j];
+            ((TextView)row.findViewById(R.id.attrib_teamName)).setText(teamNum);
+
+            ((ImageView)row.findViewById(R.id.attrib_teamImg)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    viewSubTeams(v,teamNum);
+                }
+            });;
             tl.addView(row);
         }
         tl.requestLayout();     // Not sure if this is needed.
     }
 
-    public void viewSubTeams(View view) {
+    public void viewSubTeams(View view, String teamNum) {
         Intent viewSubTeams = new Intent(this, ViewSubTeamsActivity.class);
         this.startActivity(viewSubTeams);
     }
