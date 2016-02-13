@@ -11,8 +11,6 @@ public class LogInActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        //HELLLO!?!?!
-        // Bye!
     }
     public void createProfile(View view){
         Intent createProf = new Intent(this,CreateProfileActivity.class);

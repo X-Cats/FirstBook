@@ -26,7 +26,7 @@ public class ViewProfileActivity extends Activity{
     public void showAllMemberInfo() {
         // Show all the birthdays sorted by friend's name
         Uri directory = DirectoryProvider.CONTENT_URI;
-        Cursor c = getContentResolver().query(directory, null, null, null, "id");
+        Cursor c = getContentResolver().query(directory, null, "name = ?", new String[]{"Gabe"}, "id");
         String result = "Team member results:";
 
         if (!c.moveToFirst()) {
@@ -46,8 +46,4 @@ public class ViewProfileActivity extends Activity{
         }
 
     }
-    /*public void goHome(View view){
-        Intent goHome = new Intent(this,LogInActivity.class);
-        this.startActivity(goHome);
-    }*/
 }
