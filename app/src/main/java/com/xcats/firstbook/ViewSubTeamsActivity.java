@@ -15,6 +15,8 @@ public class ViewSubTeamsActivity extends Activity{
     }
     public void viewMembers (View view){
         Intent viewMembers = new Intent(this,ViewMembersActivity.class);
+        viewMembers.putExtra("subteam","App");
         this.startActivity(viewMembers);
+
     }
 }

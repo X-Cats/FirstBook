@@ -55,7 +55,7 @@ public class ViewProfileActivity extends Activity{
         if (!c.moveToFirst()) {
             Toast.makeText(this, result + " no content yet!", Toast.LENGTH_LONG).show(); //If there isn't anything indicate so to the user
         }else{
-            do{ //Get specific fields from database and set the text fields on the page equal to the data
+            do{ //Get specific fields from database and set the text fields on the page equal to the datas
                 directoryName = c.getString(c.getColumnIndex(DirectoryProvider.NAME));
                 directoryTeamNumber = c.getString(c.getColumnIndex(DirectoryProvider.TEAMNUMBER));
                 directorySubTeam = c.getString(c.getColumnIndex(DirectoryProvider.SUBTEAM));
