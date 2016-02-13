@@ -61,16 +61,16 @@ public class CreateProfileActivity2 extends Activity {
         // Add a new member record
         ContentValues values = new ContentValues();
 
-        values.put(DirectoryProvider.NAME, name.getText().toString());
-        values.put(DirectoryProvider.TEAMNUMBER, teamNum.getText().toString());
-        values.put(DirectoryProvider.SUBTEAM, subTeam.getText().toString());
+        values.put(DirectoryProvider.NAME, name.getText().toString().trim());
+        values.put(DirectoryProvider.TEAMNUMBER, teamNum.getText().toString().trim());
+        values.put(DirectoryProvider.SUBTEAM, subTeam.getText().toString().trim());
 
-        values.put(DirectoryProvider.BIO, bio.getText().toString());
-        values.put(DirectoryProvider.AGE, age.getText().toString());
+        values.put(DirectoryProvider.BIO, bio.getText().toString().trim());
+        values.put(DirectoryProvider.AGE, age.getText().toString().trim());
 
         int selection = rg.getCheckedRadioButtonId();
 
-        values.put(DirectoryProvider.TYPE, ((RadioButton)findViewById(selection)).getText().toString());
+        values.put(DirectoryProvider.TYPE, ((RadioButton)findViewById(selection)).getText().toString().trim());
 
         Uri uri = getContentResolver().insert(
                 DirectoryProvider.CONTENT_URI, values);

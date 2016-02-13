@@ -15,6 +15,9 @@ public class ViewMembersActivity extends Activity{
     }
     public void viewProfile(View view){
         Intent viewProfile = new Intent(this,ViewProfileActivity.class);
+        viewProfile.putExtra("name","Gabe");
         this.startActivity(viewProfile);
+
     }
+
 }
