@@ -2,8 +2,10 @@ package com.xcats.firstbook;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -19,13 +21,25 @@ import org.w3c.dom.Text;
  * Created by aidan on 2/6/16.
  */
 public class CreateProfileActivity2 extends Activity {
+    TextView name;
+    TextView teamNum;
+    TextView subTeam;
+    EditText bio;
+    EditText age;
+    RadioGroup rg;
+    RadioButton student;
+    RadioButton mentor;
+
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile2);
 
-        TextView name = (TextView) findViewById(R.id.profileName);
-        TextView teamNum= (TextView) findViewById(R.id.profileTeam);
-        TextView subTeam = (TextView) findViewById(R.id.profilesubTeam);
+        name = (TextView) findViewById(R.id.profileName);
+        teamNum= (TextView) findViewById(R.id.profileTeam);
+        subTeam = (TextView) findViewById(R.id.profilesubTeam);
+        bio = (EditText) findViewById(R.id.bio);
+        age = (EditText) findViewById(R.id.age);
+        rg = (RadioGroup)findViewById(R.id.typeGroup);
 
         Bundle b = getIntent().getExtras();
         name.setText((String) b.get("name"));
@@ -34,33 +48,34 @@ public class CreateProfileActivity2 extends Activity {
     }
 
     public void addMember(View view) {
+        //try to add new person
+        directoryWrite(view);
+
+        //then bring them back to main page
+        Intent mainPage = new Intent(this,LogInActivity.class);
+        this.startActivity(mainPage);
+        Toast.makeText(this,"Directory updated",Toast.LENGTH_LONG).show();
+    }
+
+    public void directoryWrite(View v){
         // Add a new member record
         ContentValues values = new ContentValues();
 
-        values.put(DirectoryProvider.NAME,
-                ((EditText)findViewById(R.id.name)).getText().toString());
+        values.put(DirectoryProvider.NAME, name.getText().toString());
+        values.put(DirectoryProvider.TEAMNUMBER, teamNum.getText().toString());
+        values.put(DirectoryProvider.SUBTEAM, subTeam.getText().toString());
 
-        values.put(DirectoryProvider.TEAMNUMBER,
-                ((EditText)findViewById(R.id.teamNumber)).getText().toString());
-        values.put(DirectoryProvider.SUBTEAM,
-                ((EditText)findViewById(R.id.subteam)).getText().toString());
-        values.put(DirectoryProvider.BIO,
-                ((EditText)findViewById(R.id.bio)).getText().toString());
-        values.put(DirectoryProvider.AGE,
-                ((EditText)findViewById(R.id.age)).getText().toString());
+        values.put(DirectoryProvider.BIO, bio.getText().toString());
+        values.put(DirectoryProvider.AGE, age.getText().toString());
 
-        RadioGroup rg = (RadioGroup)findViewById(R.id.typeGroup);
         int selection = rg.getCheckedRadioButtonId();
 
-        values.put(DirectoryProvider.TYPE,
-                ((RadioButton)findViewById(selection)).getText().toString());
-
-
+        values.put(DirectoryProvider.TYPE, ((RadioButton)findViewById(selection)).getText().toString());
 
         Uri uri = getContentResolver().insert(
                 DirectoryProvider.CONTENT_URI, values);
 
-        Toast.makeText(getBaseContext(),
-                "Xcats: " + uri.toString() + " inserted!", Toast.LENGTH_LONG).show();
+        Log.i("Firstbook--", "Directory added with member:" + name.getText().toString());
+
     }
 }

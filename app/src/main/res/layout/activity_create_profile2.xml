@@ -39,7 +39,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:hint="Bio:"
         android:ems="10"
         android:id="@+id/bio" />
@@ -48,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/age"
+        android:inputType="text"
         android:hint="Age:"
         android:layout_gravity="center_horizontal" />
 
@@ -71,6 +72,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:onClick="create"/>
+        android:onClick="addMember"/>
 
 </LinearLayout>

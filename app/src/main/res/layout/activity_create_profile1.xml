@@ -21,22 +21,22 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType=""
         android:hint="Name:"
         android:ems="10"
-        android:id="@+id/name" />
+        android:id="@+id/nameCreateProf1" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/teamNumber"
+        android:id="@+id/teamNumberCreatProf1"
         android:hint="Team Number:"
         android:layout_gravity="center_horizontal" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/subteam"
+        android:id="@+id/subteamCreateProf1"
         android:hint="Subteam:"
         android:layout_gravity="center_horizontal" />
     <Button

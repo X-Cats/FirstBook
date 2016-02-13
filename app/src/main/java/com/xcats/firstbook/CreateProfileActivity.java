@@ -15,20 +15,25 @@ import com.xcats.firstbook.Database.DirectoryProvider;
  * Created by aidan on 2/6/16.
  */
 public class CreateProfileActivity extends Activity {
+
+    EditText name;
+    EditText teamNum;
+    EditText subTeam;
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile1);
+
+        name = (EditText) findViewById(R.id.nameCreateProf1);
+        teamNum= (EditText) findViewById(R.id.teamNumberCreatProf1);
+        subTeam = (EditText) findViewById(R.id.subteamCreateProf1);
     }
 
-    void nextStep(View view){
-        EditText name = (EditText) view.findViewById(R.id.name);
-        EditText teamNum= (EditText) view.findViewById(R.id.teamNumber);
-        EditText subTeam = (EditText) view.findViewById(R.id.subteam);
+    public void nextStep(View view){
 
         Intent createProfile = new Intent(this,CreateProfileActivity2.class);
-        createProfile.putExtra("name", name.getText());
-        createProfile.putExtra("teamNum",teamNum.getText());
-        createProfile.putExtra("subTeam",subTeam.getText());
+        createProfile.putExtra("name", name.getText().toString());
+        createProfile.putExtra("teamNum",teamNum.getText().toString());
+        createProfile.putExtra("subTeam",subTeam.getText().toString());
         this.startActivity(createProfile);
     }
 

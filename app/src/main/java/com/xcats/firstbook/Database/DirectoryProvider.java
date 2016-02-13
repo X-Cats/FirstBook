@@ -55,7 +55,7 @@ public class DirectoryProvider extends ContentProvider {
     private SQLiteDatabase database;
     static final String DATABASE_NAME = "FirstDirectory";
     static final String TABLE_NAME = "directoryTable";
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 2;
     //TODO Always bump version number following change
     static final String CREATE_TABLE =
             " CREATE TABLE " + TABLE_NAME +
@@ -64,7 +64,8 @@ public class DirectoryProvider extends ContentProvider {
                     " teamnumber TEXT NOT NULL, " +
                     " subteam TEXT NOT NULL, " +
                     " bio TEXT NOT NULL, " +
-                    " age TEXT NOT NULL);";
+                    " age TEXT NOT NULL, " +
+                    " type TEXT NOT NULL);";
 
 
     // class that creates and manages the provider's database
