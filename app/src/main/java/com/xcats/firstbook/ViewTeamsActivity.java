@@ -22,7 +22,7 @@ import com.xcats.firstbook.Database.DirectoryProvider;
  */
 public class ViewTeamsActivity extends Activity {
     TableLayout tl;
-    TableRow tr;
+
     String[] teamList;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class ViewTeamsActivity extends Activity {
 
     public void queryDB() {
         Uri directory = DirectoryProvider.CONTENT_URI;
+
         int count = numTeams(directory);
 
         Cursor c = getContentResolver().query(directory, new String[]{"DISTINCT teamnumber"}, null, null, "id");
