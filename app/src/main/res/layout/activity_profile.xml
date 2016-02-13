@@ -59,6 +59,16 @@
                         android:layout_gravity="center_horizontal"
                         />
                 </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Age: "
+                        android:id="@+id/profileAge"
+                        android:layout_gravity="center_horizontal"
+                        />
+                </TableRow>
             </TableLayout>
         </TableRow>
         <TableRow>
@@ -68,6 +78,16 @@
                 android:textSize="20sp"
                 android:text="Bio: "
                 android:id="@+id/profileBio"
+                android:layout_gravity="center_horizontal"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Type: "
+                android:id="@+id/profileType"
                 android:layout_gravity="center_horizontal"
                 />
         </TableRow>
