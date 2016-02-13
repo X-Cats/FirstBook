@@ -35,6 +35,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:text="Name: "
+                        android:id="@+id/profileName"
                         android:layout_gravity="center_horizontal"
                     />
                 </TableRow>
@@ -44,6 +45,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:text="Team: "
+                        android:id="@+id/profileTeamNumber"
                         android:layout_gravity="center_horizontal"
                         />
                 </TableRow>
@@ -53,6 +55,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:text="Subteam: "
+                        android:id="@+id/profileSubTeam"
                         android:layout_gravity="center_horizontal"
                         />
                 </TableRow>
@@ -64,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="Bio: "
+                android:id="@+id/profileBio"
                 android:layout_gravity="center_horizontal"
                 />
         </TableRow>
