@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,34 +16,59 @@ import com.xcats.firstbook.Database.DirectoryProvider;
  * Created by aidan on 2/6/16.
  */
 public class ViewProfileActivity extends Activity{
-    TextView bio;
-
+    TextView profileName;
+    TextView profileTeamNumber;
+    TextView profileSubTeam;
+    TextView profileAge;
+    TextView profileType;
+    TextView profileBio;
+    String directoryName;
+    String directoryTeamNumber;
+    String directorySubTeam;
+    String directoryAge;
+    String directoryType;
+    String directoryBio;
+    String name;
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        bio = (TextView)findViewById(R.id.profileBio);
-        showAllMemberInfo();
+
+        profileName = (TextView)findViewById(R.id.profileName);
+        profileTeamNumber = (TextView)findViewById(R.id.profileTeamNumber);
+        profileSubTeam = (TextView)findViewById(R.id.profileSubTeam);
+        profileAge = (TextView)findViewById(R.id.profileAge);
+        profileType = (TextView)findViewById(R.id.profileType);
+        profileBio = (TextView)findViewById(R.id.profileBio);
+
+        Bundle b = getIntent().getExtras();
+        name= b.getString("name");
+
+        showMemberInfo();
     }
-    public void showAllMemberInfo() {
-        // Show all the birthdays sorted by friend's name
-        Uri directory = DirectoryProvider.CONTENT_URI;
-        Cursor c = getContentResolver().query(directory, null, "name = ?", new String[]{"Gabe"}, "id");
+    public void showMemberInfo() {
+        //Show user info based on name passed down from ViewMembersActivity
+
+        Uri directory = DirectoryProvider.CONTENT_URI; //Set source of database
+        Cursor c = getContentResolver().query(directory, null, "name = ?", new String[] {name}, "id"); //query the database for info
+
         String result = "Team member results:";
-
         if (!c.moveToFirst()) {
-            Toast.makeText(this, result + " no content yet!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, result + " no content yet!", Toast.LENGTH_LONG).show(); //If there isn't anything indicate so to the user
         }else{
-            do{
-                result = result + "\n" + c.getString(c.getColumnIndex(DirectoryProvider.NAME)) +
-                        " with id " +  c.getString(c.getColumnIndex(DirectoryProvider.ID)) +
-                        " belongs to team: " + c.getString(c.getColumnIndex(DirectoryProvider.TEAMNUMBER)) +
-                        " is: " + c.getString(c.getColumnIndex(DirectoryProvider.AGE)) + "years old" +
-                        " and is on " + c.getString(c.getColumnIndex(DirectoryProvider.SUBTEAM)) + " subteam" +
-                        " and is a" + c.getString(c.getColumnIndex(DirectoryProvider.TYPE))+
-                        " whose bio looks like: " + c.getString(c.getColumnIndex(DirectoryProvider.BIO));
-
+            do{ //Get specific fields from database and set the text fields on the page equal to the datas
+                directoryName = c.getString(c.getColumnIndex(DirectoryProvider.NAME));
+                directoryTeamNumber = c.getString(c.getColumnIndex(DirectoryProvider.TEAMNUMBER));
+                directorySubTeam = c.getString(c.getColumnIndex(DirectoryProvider.SUBTEAM));
+                directoryAge = c.getString(c.getColumnIndex(DirectoryProvider.AGE));
+                directoryType = c.getString(c.getColumnIndex(DirectoryProvider.TYPE));
+                directoryBio = c.getString(c.getColumnIndex(DirectoryProvider.BIO));
             } while (c.moveToNext());
-            bio.setText(result);
+            profileName.setText(directoryName);
+            profileTeamNumber.setText(directoryTeamNumber);
+            profileSubTeam.setText(directorySubTeam);
+            profileAge.setText(directoryAge);
+            profileType.setText(directoryType);
+            profileBio.setText(directoryBio);
         }
 
     }
