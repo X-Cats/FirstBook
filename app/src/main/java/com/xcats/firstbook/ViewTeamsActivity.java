@@ -55,6 +55,7 @@ public class ViewTeamsActivity extends Activity {
                 c.moveToNext();
             }
         }
+        c.close();
     }
 
     public int numTeams(Uri directory){
@@ -67,6 +68,7 @@ public class ViewTeamsActivity extends Activity {
 
             return Integer.parseInt(temp);
         }
+        c.close();
         return 0;
     }
 
