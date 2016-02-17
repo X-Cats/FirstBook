@@ -20,32 +20,28 @@ import com.xcats.firstbook.Database.DirectoryProvider;
  * Created by aidan on 2/6/16.
  */
 public class ViewSubTeamsActivity extends Activity{
-    String teamNum;
-    String subteam;
-    TableLayout tl;
-    String[] subTeamList;
 
+    String [] subTeamList;
+    TableLayout tl;
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subteam_list);
-        Bundle b = getIntent().getExtras();
-        teamNum = b.getString("teamNum");
 
-
-        tl = (TableLayout) findViewById(R.id.subteamViewTableLayout);
-
-        //generates a list of teams
         queryDB();
-
-        generateTeams();
+        generateSubTeams();
     }
+    public void viewMembers (View view){
+        Intent viewMembers = new Intent(this,ViewMembersActivity.class);
+        viewMembers.putExtra("subteam","App");
+        this.startActivity(viewMembers);
 
+    }
     public void queryDB() {
         Uri directory = DirectoryProvider.CONTENT_URI;
 
         int count = numSubTeams(directory);
 
-        Cursor c = getContentResolver().query(directory, new String[]{"DISTINCT subteam", "teamnumber = " + teamNum}, null, null, "id");
+        Cursor c = getContentResolver().query(directory, new String[]{"DISTINCT subteam"}, null, null, "id");
 
         subTeamList = new String[count];
 
@@ -53,7 +49,7 @@ public class ViewSubTeamsActivity extends Activity{
             Toast.makeText(this, " no content yet!", Toast.LENGTH_LONG).show();
         } else {
             for(int i=0;i<count;i++){
-                subTeamList[i] = c.getString(c.getColumnIndex("teamnumber"));
+                subTeamList[i] = c.getString(c.getColumnIndex("subteam"));
                 Log.e("Firstbook", subTeamList[i]);
                 c.moveToNext();
             }
@@ -61,7 +57,7 @@ public class ViewSubTeamsActivity extends Activity{
     }
 
     public int numSubTeams(Uri directory){
-        Cursor c = getContentResolver().query(directory, new String[]{"count(DISTINCT subteam)", "teamnumber = " + teamNum}, null, null, "id");
+        Cursor c = getContentResolver().query(directory, new String[]{"count(DISTINCT subteam)"}, null, null, "id");
 
         if (!c.moveToFirst()) {
         }else {
@@ -70,11 +66,10 @@ public class ViewSubTeamsActivity extends Activity{
 
             return Integer.parseInt(temp);
         }
-        c.close();
         return 0;
     }
 
-    public void generateTeams() {
+    public void generateSubTeams() {
         for(int j=0;j<subTeamList.length;j++)
         {
             // Inflate your row "template" and fill out the fields.
@@ -86,18 +81,16 @@ public class ViewSubTeamsActivity extends Activity{
                 @Override
                 public void onClick(View v)
                 {
-                    viewMembers(v, teamNum, subteam);
+                    viewSubTeams(v,teamNum);
                 }
             });;
             tl.addView(row);
         }
         tl.requestLayout();     // Not sure if this is needed.
     }
-    public void viewMembers (View view, String teamNum, String subteam){
-        Intent viewMembers = new Intent(this,ViewMembersActivity.class);
-        viewMembers.putExtra("teamNum", teamNum);
-        viewMembers.putExtra("subteam",subteam);
-        this.startActivity(viewMembers);
 
+    public void viewSubTeams(View view, String teamNum) {
+        Intent viewSubTeams = new Intent(this, ViewSubTeamsActivity.class);
+        this.startActivity(viewSubTeams);
     }
 }
