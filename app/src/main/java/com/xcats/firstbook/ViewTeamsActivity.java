@@ -92,6 +92,7 @@ public class ViewTeamsActivity extends Activity {
 
     public void viewSubTeams(View view, String teamNum) {
         Intent viewSubTeams = new Intent(this, ViewSubTeamsActivity.class);
+        viewSubTeams.putExtra("teamNum",teamNum);
         this.startActivity(viewSubTeams);
     }
 }

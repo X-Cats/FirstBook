@@ -22,12 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TableRow>
-                <ImageView
-                    android:layout_height="100dp"
-                    android:layout_width="100dp"
-                    android:adjustViewBounds="true"
-                    android:src="@mipmap/ic_launcher"
-                    android:layout_gravity="center_horizontal"/>
+            <ImageView
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_gravity="center_horizontal"/>
             <TableLayout>
                 <TableRow>
                     <TextView
@@ -37,7 +37,7 @@
                         android:text="Name: "
                         android:id="@+id/profileName"
                         android:layout_gravity="center_horizontal"
-                    />
+                        />
                 </TableRow>
                 <TableRow>
                     <TextView
