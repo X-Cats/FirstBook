@@ -45,7 +45,7 @@ public class ViewSubTeamsActivity extends Activity{
 
         int count = numSubTeams(directory);
 
-        Cursor c = getContentResolver().query(directory, new String[]{"DISTINCT subteam", "teamnumber = " + teamNum}, null, null, "id");
+        Cursor c = getContentResolver().query(directory, new String[]{"DISTINCT subteam"}, "teamnumber = ?", new String[] {teamNum}, "id");
 
         subTeamList = new String[count];
 
@@ -53,7 +53,7 @@ public class ViewSubTeamsActivity extends Activity{
             Toast.makeText(this, " no content yet!", Toast.LENGTH_LONG).show();
         } else {
             for(int i=0;i<count;i++){
-                subTeamList[i] = c.getString(c.getColumnIndex("teamnumber"));
+                subTeamList[i] = c.getString(c.getColumnIndex("subteam"));
                 Log.e("Firstbook", subTeamList[i]);
                 c.moveToNext();
             }
@@ -61,7 +61,7 @@ public class ViewSubTeamsActivity extends Activity{
     }
 
     public int numSubTeams(Uri directory){
-        Cursor c = getContentResolver().query(directory, new String[]{"count(DISTINCT subteam)", "teamnumber = " + teamNum}, null, null, "id");
+        Cursor c = getContentResolver().query(directory, new String[]{"count(DISTINCT subteam)"}, "teamnumber = ?", new String[] {teamNum}, "id");
 
         if (!c.moveToFirst()) {
         }else {
