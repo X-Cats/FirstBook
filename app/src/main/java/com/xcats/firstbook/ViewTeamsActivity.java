@@ -40,32 +40,39 @@ public class ViewTeamsActivity extends Activity {
     public void queryDB() {
         Uri directory = DirectoryProvider.CONTENT_URI;
 
+        //Make a new variable equal to the number of teams from the numTeams() function
         int count = numTeams(directory);
 
+        //Find distinct teamnumbers to list
         Cursor c = getContentResolver().query(directory, new String[]{"DISTINCT teamnumber"}, null, null, "id");
 
+        //Make an array of the teamnumbers that is equal in length to the number of teams.
         teamList = new String[count];
-
+        //If the cursor doesn't find anything tell the user that nothing is in the database.
         if (!c.moveToFirst()) {
             Toast.makeText(this, " no content yet!", Toast.LENGTH_LONG).show();
         } else {
+            //Otherwise, for each team in the database add their number to the teamList[] array
             for(int i=0;i<count;i++){
                 teamList[i] = c.getString(c.getColumnIndex("teamnumber"));
                 Log.e("Firstbook", teamList[i]);
                 c.moveToNext();
             }
         }
+        //Close the cursor so it doesn't use a lot of RAM
         c.close();
     }
 
     public int numTeams(Uri directory){
+        //Look through team numbers. If a team number found is identical to a team number found before ignore it
         Cursor c = getContentResolver().query(directory, new String[]{"count(DISTINCT teamnumber)"}, null, null, "id");
-
+        //If there is nothing there do nothing
         if (!c.moveToFirst()) {
-        }else {
+        }else { //Otherwise return the number of teamnumbers.
             String temp = c.getString(c.getColumnIndex("count(DISTINCT teamnumber)"));
             Log.e("Firstbook --", "There are distinct number of teams: " + temp );
 
+            //Returns number of teams in database
             return Integer.parseInt(temp);
         }
         c.close();
