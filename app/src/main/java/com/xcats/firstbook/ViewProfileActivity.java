@@ -28,7 +28,9 @@ public class ViewProfileActivity extends Activity{
     String directoryAge;
     String directoryType;
     String directoryBio;
+
     String name;
+    String teamNum;
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
@@ -42,6 +44,7 @@ public class ViewProfileActivity extends Activity{
 
         Bundle b = getIntent().getExtras();
         name= b.getString("name");
+        teamNum=b.getString("teamNum");
 
         showMemberInfo();
     }
@@ -49,7 +52,7 @@ public class ViewProfileActivity extends Activity{
         //Show user info based on name passed down from ViewMembersActivity
 
         Uri directory = DirectoryProvider.CONTENT_URI; //Set source of database
-        Cursor c = getContentResolver().query(directory, null, "name = ?", new String[] {name}, "id"); //query the database for info
+        Cursor c = getContentResolver().query(directory, null, "name = ? AND teamnumber = ?", new String[] {name, teamNum}, "id"); //query the database for info
 
         String result = "Team member results:";
         if (!c.moveToFirst()) {
