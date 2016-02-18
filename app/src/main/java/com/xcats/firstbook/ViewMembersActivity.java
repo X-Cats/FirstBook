@@ -5,7 +5,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,56 +20,89 @@ import com.xcats.firstbook.Database.DirectoryProvider;
  * Created by aidan on 2/6/16.
  */
 public class ViewMembersActivity extends Activity{
+
+    String teamNum;
     String subteam;
-    TextView name1;
-    TextView name2;
-    TextView name3;
-    TextView name4;
-    TextView name5;
-    TextView name6;
-    String memberName;
+    TableLayout tl;
+    String[] memberList;
+
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_list);
-
-        name1 = (TextView)findViewById(R.id.name1);
-        name2 = (TextView)findViewById(R.id.name2);
-        name3 = (TextView)findViewById(R.id.name3);
-        name4 = (TextView)findViewById(R.id.name4);
-        name5 = (TextView)findViewById(R.id.name5);
-        name6 = (TextView)findViewById(R.id.name6);
-
         Bundle b = getIntent().getExtras();
+        teamNum = b.getString("teamNum");
         subteam = b.getString("subteam");
 
-        showSubteamInfo();
-    }
-    public void viewProfile(View view){
 
+        tl = (TableLayout) findViewById(R.id.memberViewTableLayout);
+
+        //generates a list of teams
+        queryDB();
+
+        generateTeams();
+    }
+
+    public void queryDB() {
+        Uri directory = DirectoryProvider.CONTENT_URI;
+
+        int count = numMembers(directory);
+
+        Cursor c = getContentResolver().query(directory, new String[]{"DISTINCT name"}, "teamnumber = ?  AND subteam = ?", new String[] {teamNum,subteam}, "id");
+
+        memberList = new String[count];
+
+        if (!c.moveToFirst()) {
+            Toast.makeText(this, " no content yet!", Toast.LENGTH_LONG).show();
+        } else {
+            for(int i=0;i<count;i++){
+                memberList[i] = c.getString(c.getColumnIndex("name"));
+                Log.e("Firstbook", memberList[i]);
+                c.moveToNext();
+            }
+        }
+    }
+
+    public int numMembers(Uri directory){
+        Cursor c = getContentResolver().query(directory, new String[]{"count(DISTINCT name)"}, "teamnumber = ? AND subteam = ?", new String[] {teamNum,subteam}, "id");
+
+        if (!c.moveToFirst()) {
+        }else {
+            String temp = c.getString(c.getColumnIndex("count(DISTINCT name)"));
+            Log.e("Firstbook --", "There are distinct number of members: " + temp );
+
+            return Integer.parseInt(temp);
+        }
+        c.close();
+        return 0;
+    }
+
+    public void generateTeams() {
+        for(int j=0;j<memberList.length;j++)
+        {
+            // Inflate your row "template" and fill out the fields.
+            TableRow row = (TableRow) LayoutInflater.from(this).inflate(R.layout.attrib_row, null);
+            final String name = memberList[j];
+            ((TextView)row.findViewById(R.id.attrib_teamName)).setText(name);
+
+            ((ImageView)row.findViewById(R.id.attrib_teamImg)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    viewProfile(v, teamNum, subteam, name);
+                }
+            });;
+            tl.addView(row);
+        }
+        tl.requestLayout();     // Not sure if this is needed.
+    }
+    public void viewProfile(View view, String teamNum, String subteam, String name){
 
         Intent viewProfile = new Intent(this,ViewProfileActivity.class);
-        viewProfile.putExtra("name", memberName);
+        viewProfile.putExtra("teamNum", teamNum);
+        viewProfile.putExtra("subteam", subteam);
+        viewProfile.putExtra("name", name);
         this.startActivity(viewProfile);
 
-
-    }
-    public void showSubteamInfo() {
-        //Show user info based on name passed down from ViewMembersActivity
-
-        Uri directory = DirectoryProvider.CONTENT_URI; //Set source of database
-        Cursor c = getContentResolver().query(directory, null, "subteam = ?", new String[] {subteam}, "id"); //query the database for info
-
-        String result = "Team member results:";
-        if (!c.moveToFirst()) {
-            Toast.makeText(this, result + " no content yet!", Toast.LENGTH_LONG).show(); //If there isn't anything indicate so to the user
-        }else{
-            name1.setText(c.getString(c.getColumnIndex(DirectoryProvider.NAME)));
-            c.moveToNext();
-            name2.setText(c.getString(c.getColumnIndex(DirectoryProvider.NAME)));
-            c.moveToNext();
-            name3.setText(c.getString(c.getColumnIndex(DirectoryProvider.NAME)));
-            c.moveToNext();
-        }
 
     }
 

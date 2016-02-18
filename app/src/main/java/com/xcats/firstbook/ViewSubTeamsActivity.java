@@ -21,7 +21,6 @@ import com.xcats.firstbook.Database.DirectoryProvider;
  */
 public class ViewSubTeamsActivity extends Activity{
     String teamNum;
-    String subteam;
     TableLayout tl;
     String[] subTeamList;
 
@@ -79,8 +78,8 @@ public class ViewSubTeamsActivity extends Activity{
         {
             // Inflate your row "template" and fill out the fields.
             TableRow row = (TableRow) LayoutInflater.from(this).inflate(R.layout.attrib_row, null);
-            final String teamNum = subTeamList[j];
-            ((TextView)row.findViewById(R.id.attrib_teamName)).setText(teamNum);
+            final String subteam = subTeamList[j];
+            ((TextView)row.findViewById(R.id.attrib_teamName)).setText(subteam);
 
             ((ImageView)row.findViewById(R.id.attrib_teamImg)).setOnClickListener(new View.OnClickListener() {
                 @Override
