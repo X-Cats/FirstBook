@@ -16,26 +16,37 @@ import com.xcats.firstbook.Database.DirectoryProvider;
  */
 public class CreateProfileActivity extends Activity {
 
-    EditText name;
-    EditText teamNum;
-    EditText subTeam;
-    public void onCreate(Bundle savedInstanceState){
+    EditText nameEdit;
+    EditText teamNumEdit;
+    EditText subTeamEdit;
+
+    String name;
+    String teamNum;
+    String subTeam;
+
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile1);
 
-        name = (EditText) findViewById(R.id.nameCreateProf1);
-        teamNum= (EditText) findViewById(R.id.teamNumberCreatProf1);
-        subTeam = (EditText) findViewById(R.id.subteamCreateProf1);
+        nameEdit = (EditText) findViewById(R.id.nameCreateProf1);
+        teamNumEdit = (EditText) findViewById(R.id.teamNumberCreatProf1);
+        subTeamEdit = (EditText) findViewById(R.id.subteamCreateProf1);
     }
 
-    public void nextStep(View view){
+    public void nextStep(View view) {
 
-        Intent createProfile = new Intent(this,CreateProfileActivity2.class);
-        createProfile.putExtra("name", name.getText().toString());
-        createProfile.putExtra("teamNum",teamNum.getText().toString());
-        createProfile.putExtra("subTeam",subTeam.getText().toString());
-        this.startActivity(createProfile);
+        name = nameEdit.getText().toString();
+        teamNum = teamNumEdit.getText().toString();
+        subTeam = subTeamEdit.getText().toString();
+
+        if(!name.isEmpty() && !teamNum.isEmpty() && !subTeam.isEmpty()){
+            Intent createProfile = new Intent(this, CreateProfileActivity2.class);
+            createProfile.putExtra("name", name);
+            createProfile.putExtra("teamNum", teamNum);
+            createProfile.putExtra("subTeam", subTeam);
+            this.startActivity(createProfile);
+        }
+
     }
-
 
 }

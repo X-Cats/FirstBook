@@ -24,11 +24,16 @@ public class CreateProfileActivity2 extends Activity {
     TextView name;
     TextView teamNum;
     TextView subTeam;
-    EditText bio;
-    EditText age;
+    EditText bioEdit;
+    EditText ageEdit;
     RadioGroup rg;
     RadioButton student;
     RadioButton mentor;
+
+    String bio;
+    String age;
+    int selection;
+
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,8 +42,8 @@ public class CreateProfileActivity2 extends Activity {
         name = (TextView) findViewById(R.id.profileName);
         teamNum= (TextView) findViewById(R.id.profileTeam);
         subTeam = (TextView) findViewById(R.id.profilesubTeam);
-        bio = (EditText) findViewById(R.id.bio);
-        age = (EditText) findViewById(R.id.age);
+        bioEdit = (EditText) findViewById(R.id.bio);
+        ageEdit = (EditText) findViewById(R.id.age);
         rg = (RadioGroup)findViewById(R.id.typeGroup);
 
         Bundle b = getIntent().getExtras();
@@ -48,13 +53,20 @@ public class CreateProfileActivity2 extends Activity {
     }
 
     public void addMember(View view) {
-        //try to add new person
-        directoryWrite(view);
 
-        //then bring them back to main page
-        Intent mainPage = new Intent(this,LogInActivity.class);
-        this.startActivity(mainPage);
-        Toast.makeText(this,"Directory updated",Toast.LENGTH_LONG).show();
+        bio = bioEdit.getText().toString();
+        age = ageEdit.getText().toString();
+        selection = rg.getCheckedRadioButtonId();
+
+       if(!bio.isEmpty() && !age.isEmpty() && selection !=-1 ){
+           //try to add new person
+           directoryWrite(view);
+
+           //then bring them back to main page
+           Intent mainPage = new Intent(this, LogInActivity.class);
+           this.startActivity(mainPage);
+           Toast.makeText(this, "Directory updated", Toast.LENGTH_LONG).show();
+       }
     }
 
     public void directoryWrite(View v){
@@ -65,10 +77,9 @@ public class CreateProfileActivity2 extends Activity {
         values.put(DirectoryProvider.TEAMNUMBER, teamNum.getText().toString().trim());
         values.put(DirectoryProvider.SUBTEAM, subTeam.getText().toString().trim());
 
-        values.put(DirectoryProvider.BIO, bio.getText().toString().trim());
-        values.put(DirectoryProvider.AGE, age.getText().toString().trim());
+        values.put(DirectoryProvider.BIO, bio.trim());
+        values.put(DirectoryProvider.AGE, age.trim());
 
-        int selection = rg.getCheckedRadioButtonId();
 
         values.put(DirectoryProvider.TYPE, ((RadioButton)findViewById(selection)).getText().toString().trim());
 
