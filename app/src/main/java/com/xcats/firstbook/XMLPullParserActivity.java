@@ -13,6 +13,8 @@ import java.util.List;
 /**
  * Created by aidan on 2/10/16.
  */
+
+//TODO THIS IS OBSOLETE
 public class XMLPullParserActivity extends Activity {
     ProfileOptionActivity profile;
     List<ProfileOptionActivity> profiles;
