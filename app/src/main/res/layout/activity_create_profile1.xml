@@ -31,7 +31,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/teamNumberCreatProf1"
         android:hint="Team Number:"
-        android:inputType="number"
         android:layout_gravity="center_horizontal" />
 
     <EditText
@@ -40,6 +39,10 @@
         android:id="@+id/subteamCreateProf1"
         android:hint="Subteam:"
         android:layout_gravity="center_horizontal" />
+    <Spinner
+        android:id="@+id/planets_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
