@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="@color/blue"
     android:layout_height="match_parent">
     <TextView
         android:layout_width="wrap_content"
@@ -9,6 +10,7 @@
         android:text="FirstBook"
         android:textSize="30sp"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
         android:layout_gravity="center_horizontal" />
     <TextView
         android:layout_width="wrap_content"
@@ -16,6 +18,7 @@
         android:text="Step 1: Create a Profile"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
         android:layout_gravity="center_horizontal"/>
 
     <EditText
@@ -24,6 +27,7 @@
         android:inputType=""
         android:hint="Name:"
         android:ems="10"
+        android:textColor="@color/lightGrey"
         android:id="@+id/nameCreateProf1" />
 
     <EditText
@@ -31,6 +35,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/teamNumberCreatProf1"
         android:hint="Team Number:"
+        android:inputType="number"
+        android:textColor="@color/lightGrey"
         android:layout_gravity="center_horizontal" />
 
     <EditText
@@ -38,15 +44,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/subteamCreateProf1"
         android:hint="Subteam:"
+        android:textColor="@color/lightGrey"
         android:layout_gravity="center_horizontal" />
-    <Spinner
-        android:id="@+id/planets_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Next Step"
+        android:background="@color/lightGrey"
+        android:textColor="@color/red"
         android:onClick="nextStep"/>
 
 </LinearLayout>
