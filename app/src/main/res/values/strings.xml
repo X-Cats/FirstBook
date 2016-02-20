@@ -10,5 +10,6 @@
         <item>Promotion</item>
         <item>Software</item>
         <item>Web</item>
+        <item>None</item>
     </string-array>
 </resources>

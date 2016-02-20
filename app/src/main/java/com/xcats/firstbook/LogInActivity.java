@@ -20,4 +20,8 @@ public class LogInActivity extends Activity {
         Intent viewTeams = new Intent(this,ViewTeamsActivity.class);
         this.startActivity(viewTeams);
     }
+    public void search(View view){
+        Intent search = new Intent(this, SearchActivity.class);
+        this.startActivity(search);
+    }
 }

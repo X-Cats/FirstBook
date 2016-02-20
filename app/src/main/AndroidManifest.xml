@@ -21,6 +21,7 @@
         <activity android:name=".ViewSubTeamsActivity"/>
         <activity android:name=".ViewMembersActivity"/>
         <activity android:name=".ViewProfileActivity"/>
+        <activity android:name=".SearchActivity"/>
         <provider android:name=".Database.DirectoryProvider"
             android:authorities="com.xcats.firstbook.provider.Directory"/>
     </application>
