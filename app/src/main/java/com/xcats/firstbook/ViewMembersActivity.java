@@ -90,7 +90,7 @@ public class ViewMembersActivity extends Activity{
                 {
                     viewProfile(v, teamNum, subteam, name);
                 }
-            });;
+            });
             tl.addView(row);
         }
         tl.requestLayout();     // Not sure if this is needed.

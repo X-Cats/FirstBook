@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">FirstBook</string>
+    <string-array name="subteam_names">
+        <item>App</item>
+        <item>Animation</item>
+        <item>CAD</item>
+        <item>Drives</item>
+        <item>Electrical</item>
+        <item>Mechanical</item>
+        <item>Promotion</item>
+        <item>Software</item>
+        <item>Web</item>
+    </string-array>
 </resources>
