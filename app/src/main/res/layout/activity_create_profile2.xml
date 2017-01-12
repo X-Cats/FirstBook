@@ -50,7 +50,6 @@
         android:ems="10"
         android:textColor="@color/white"
         android:id="@+id/bio" />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,6 +58,18 @@
         android:hint="Age:"
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:id="@+id/imageToUpload"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <Button
+        android:id="@+id/bUploadImage"
+        android:text="Upload Image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -77,6 +88,7 @@
             android:textColor="@color/lightGrey"
             android:id="@+id/mentorButton"/>
     </RadioGroup>
+
 
     <Button
         android:layout_width="match_parent"
